@@ -1,0 +1,79 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <h4 class="card-title">{{pageTitle}}</h4>
+      </div>
+      <div class="col-md-8 row justify-content-lg-end">
+        <input type="text" placeholder="Search by name" [(ngModel)]="searchKeyWord"/>&nbsp;
+        <button class="btn btn-success" (click)="searchByKeyWord()">Filter Results</button>
+      </div>
+    </div>
+    <hr/>
+    <div class="table-responsive shadow p-3 mb-5 bg-white rounded"
+         *ngIf="products?.length>=1; else noProduct">
+      <table class="table table-hover table-striped table-borderless">
+        <thead class="thead-dark">
+        <tr>
+          <th>Product Name</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Tenant Name</th>
+          <th colspan="2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td><a style="color: blue;text-decoration: underline"
+                 (click)="goToDetails(product.productId)">
+            {{product.productName}}</a>
+          </td>
+          <td> {{product.createdAt | truncatedate}}</td>
+          <td> {{product.updatedAt | truncatedate}}</td>
+          <td> {{product.tenant.tenantName}}</td>
+          <td>
+            <button class="btn btn-primary"
+                    (click)="updateProduct(product.productId)">
+              <span class="fa fa-edit">Update</span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="openModal(template)" *ngIf="isAllowed()">
+              <span class="fa fa-minus-circle">Delete</span>
+            </button>
+          </td>
+          <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Confirm</h4>
+            </div>
+            <div class="modal-body text-center">
+              <p>Are you sure you want to delete ?</p>
+              <button type="button" class="btn btn-default" (click)="confirm(product.productId)">Yes
+              </button>
+              <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+            </div>
+          </ng-template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noProduct>
+      <div class="row justify-content-center">
+        <strong>You have got no Products to view. Please try adding a few [<a class="link"
+                                                                              routerLink="/product-add">
+          Add an product
+        </a>]!!! </strong>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row top-buffer">
+    <div class="container" *ngIf="products?.length>=1">
+      <app-stylish-pagination [maxPages]="maxPages" [currentPage]="currentPage"
+                              [itemsPerPage]="itemsPerPage"
+                              (changePage)="pageChanged($event)"></app-stylish-pagination>
+    </div>
+  </div>
+</div>

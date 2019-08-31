@@ -1,0 +1,55 @@
+<nav class="navbar navbar-inverse navbar-dark bg-dark mb-5">
+  <div class="container">
+    <a routerLink="/app-home" class="navbar-brand" style="color: white;">
+      <img src="../../../assets/logos/infosys.jpg" class="d-inline-block align-top" alt="">
+      {{title}}</a>
+    <div *ngIf="isLoggedIn()" class="btn-group" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic">
+        Hi {{username}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
+          aria-labelledby="button-basic">
+        <li *ngIf="isAdmin()" role="menuitem">
+          <a class="dropdown-item" routerLink="/tenants">
+            <span class="fa fa-asterisk"> View Tenants</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isAdmin()||isCustomer()" role="menuitem">
+          <a class="dropdown-item" routerLink="/products">
+            <span class="fa fa-asterisk"> View Products</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isCustomer()||isAdmin()" role="menuitem">
+          <a class="dropdown-item" routerLink="/users">
+            <span class="fa fa-asterisk"> View Users</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isAdmin()" role="menuitem">
+          <a class="dropdown-item" routerLink="/tenant-add">
+            <span class="fa fa-plus"> Add New Tenant</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isCustomer() || isAdmin()" role="menuitem">
+          <a class="dropdown-item" routerLink="/product-add">
+            <span class="fa fa-plus"> Add New Product</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isAdmin()" role="menuitem">
+          <a class="dropdown-item" routerLink="/dashboard">
+            <span class="fa fa-dashboard"> Dashboard</span>
+          </a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li *ngIf="isLoggedIn()" role="menuitem"><a class="dropdown-item" (click)="onLogout()">
+          <span class="fa fa-sign-out">Logout</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

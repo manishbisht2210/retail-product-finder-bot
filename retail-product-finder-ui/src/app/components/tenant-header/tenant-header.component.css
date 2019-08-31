@@ -1,0 +1,11 @@
+@font-face {
+  font-family: batmanForeverFont;
+  src: url(../../../assets/fonts/batmfa__.ttf);
+}
+
+.batman {
+  font-family: batmanForeverFont;
+  color: crimson;
+  text-align: center;
+  vertical-align: middle;
+}

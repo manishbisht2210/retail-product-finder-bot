@@ -1,0 +1,55 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <h4 class="card-title">{{pageTitle}}</h4>
+      </div>
+      <div class="col-md-8 row justify-content-lg-end">
+        <input type="text" placeholder="Search by name" [(ngModel)]="searchKeyWord"/>&nbsp;
+        <button class="btn btn-success" (click)="searchByKeyWord()">Filter Results</button>
+      </div>
+    </div>
+    <hr/>
+    <div class="table-responsive shadow p-3 mb-5 bg-white rounded"
+         *ngIf="users?.length>=1; else noUser">
+      <table class="table table-hover table-striped table-borderless">
+        <thead class="thead-dark">
+        <tr>
+          <th>User Name</th>
+          <th>FullName</th>
+          <th>Email</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td><a style="color: blue;text-decoration: underline"
+                 (click)="goToDetails(user.userId)">
+            {{user.userName}}</a>
+          </td>
+          <td> {{user.fullName}}</td>
+          <td> {{user.email }}</td>
+          <td> {{user.createdAt | truncatedate}}</td>
+          <td> {{user.updatedAt | truncatedate}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noUser>
+      <div class="row justify-content-center">
+        <strong>You have got no Users to view.</strong>
+      </div>
+    </ng-template>
+  </div>
+  <div class="row top-buffer">
+    <div class="container" *ngIf="users?.length>=1">
+      <app-stylish-pagination [maxPages]="maxPages" [currentPage]="currentPage"
+                              [itemsPerPage]="itemsPerPage"
+                              (changePage)="pageChanged($event)"></app-stylish-pagination>
+    </div>
+  </div>
+</div>

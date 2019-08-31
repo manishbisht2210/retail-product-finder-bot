@@ -1,0 +1,50 @@
+<div class="container" style="display: block">
+  <h1 style="text-align:center">
+    {{title}}!
+  </h1>
+</div>
+<hr/>
+Bar Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'bar'" [datasets]="objChartData" [labels]="labels" [options]="chartOptions"
+          [legend]="true"
+          (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<hr/>
+Line Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'line'" [datasets]="objChartData" [labels]="labels" [options]="chartOptions"
+          [legend]="true"
+          (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<hr/>
+Radar Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'radar'" [datasets]="objChartData" [labels]="labels" [options]="chartOptions"
+          [legend]="true"
+          (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<hr/>
+Pie Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'pie'" [data]="singularArrayChartData" [labels]="labels"
+          (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<hr/>
+PolarArea Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'polarArea'" [data]="singularArrayChartData" [labels]="labels" [options]="chartOptions"
+          [legend]="true" (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<hr/>
+Doughnut Chart
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <canvas baseChart [chartType]="'doughnut'" [data]="singularArrayChartData" [labels]="labels"
+          (chartClick)="onChartClick($event)">
+  </canvas>
+</div>

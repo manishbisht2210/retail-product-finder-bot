@@ -1,0 +1,23 @@
+.btn-space {
+  margin-right: 15px;
+}
+
+.page-link {
+  color: black;
+  text-orientation: inherit;
+  text-align: center;
+  /* border-radius: 50%; */
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: rgb(92, 252, 92);
+  border-color: rgb(92, 252, 92);
+}
+
+.button-colors {
+  background-color: rgb(92, 252, 92);
+  border-color: rgb(92, 252, 92);
+  color: white;
+}

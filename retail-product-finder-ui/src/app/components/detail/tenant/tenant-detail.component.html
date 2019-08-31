@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card cards shadow p-3 mb-5 bg-white rounded">
+    <div class="card-header">
+      <div class="row justify-content-center">
+        <div><strong>{{tenant?.tenantName}}</strong></div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <!--<div class="col-md-4">-->
+        <!--<img class="card-img-top" [src]="getImage(tenant)" style="width: 100%;height: 100%"-->
+             <!--alt="Card image cap">-->
+      <!--</div>-->
+      <div class="col-md-12">
+        <hr/>
+        <div class="row justify-content-center">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>City</strong> : {{tenant?.city}}</li>
+            <li class="list-group-item"><strong>Type</strong> :
+              {{tenant?.type}}
+            </li>
+          </ul>
+        </div>
+        <hr/>
+      </div>
+    </div>
+  </div>
+</div>
+

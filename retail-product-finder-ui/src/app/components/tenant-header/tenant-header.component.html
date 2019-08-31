@@ -1,0 +1,8 @@
+<div class="row justify-content-center shadow p-3 mb-5 bg-white rounded" *ngIf="isLoggedIn()">
+  <div class="col-md-2 row justify-content-center">
+    <img [src]="getTenantImage()"/>
+  </div>
+  <div class="col-md-10">
+    <h4 class="batman">{{tenantName}}</h4>
+  </div>
+</div>
